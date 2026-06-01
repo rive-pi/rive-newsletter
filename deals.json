@@ -1,0 +1,48 @@
+{
+  "deals": [
+    {
+      "id": 1,
+      "date": "2026-05-28",
+      "title": "Alstom acquires Bombardier EU maintenance contracts",
+      "sector": "Rail",
+      "type": "M&A",
+      "value": "€340M",
+      "geography": "France / Germany",
+      "summary": "Alstom strengthens its European maintenance footprint by acquiring the remaining EU maintenance contracts from Bombardier Transportation, covering 12 depots across France and Germany.",
+      "source": "Reuters"
+    },
+    {
+      "id": 2,
+      "date": "2026-05-20",
+      "title": "Nordic Aviation Capital raises €1.2B green bond",
+      "sector": "Aviation",
+      "type": "Debt Raise",
+      "value": "€1.2B",
+      "geography": "Pan-Europe",
+      "summary": "NAC closes its largest ever green bond issuance to fund the acquisition of next-generation narrow-body aircraft, targeting A320neo and 737 MAX deliveries through 2028.",
+      "source": "Financial Times"
+    },
+    {
+      "id": 3,
+      "date": "2026-05-15",
+      "title": "CMA CGM acquires Hamburg Sud feeder network",
+      "sector": "Shipping",
+      "type": "M&A",
+      "value": "€890M",
+      "geography": "Northern Europe",
+      "summary": "CMA CGM expands its Northern European short-sea presence with the acquisition of Hamburg Sud's feeder network, adding 23 vessels and 8 port concessions.",
+      "source": "Lloyd's List"
+    },
+    {
+      "id": 4,
+      "date": "2026-05-10",
+      "title": "Safran & MTU expand CFM LEAP MRO joint venture in Poland",
+      "sector": "Engines",
+      "type": "Infrastructure",
+      "value": "€210M",
+      "geography": "Poland",
+      "summary": "Safran Aircraft Engines and MTU Aero Engines commit €210M capex to expand their joint MRO facility in Warsaw, doubling LEAP engine overhaul capacity to meet surging demand.",
+      "source": "Aviation Week"
+    }
+  ]
+}

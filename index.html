@@ -5,35 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rive Private Investment — Market Intelligence</title>
   <style>
-    /* ── RESET & BASE ── */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a1a; }
-
-    /* ── NAVIGATION ── */
     nav { background: #0f1923; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
     .nav-logo { color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; }
     .nav-tabs { display: flex; gap: 4px; }
     .nav-tab { color: #8a9bb0; font-size: 12px; padding: 6px 14px; border-radius: 6px; cursor: pointer; border: none; background: none; transition: all 0.15s; }
     .nav-tab:hover { color: #fff; background: rgba(255,255,255,0.08); }
     .nav-tab.active { color: #fff; background: rgba(255,255,255,0.12); }
-
-    /* ── HERO ── */
     .hero { background: #0f1923; padding: 40px 32px 48px; }
     .hero-edition { font-size: 10px; color: #4a7fa8; letter-spacing: 0.14em; font-weight: 600; margin-bottom: 10px; }
     .hero-title { color: #fff; font-size: 26px; font-weight: 600; line-height: 1.3; margin-bottom: 8px; max-width: 600px; }
     .hero-meta { font-size: 12px; color: #5a7a94; }
     .hero-meta span { color: #8a9bb0; margin: 0 6px; }
-
-    /* ── SECTIONS ── */
     .page { display: none; padding: 28px 32px; max-width: 1100px; margin: 0 auto; }
     .page.active { display: block; }
     .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #9ca3af; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #e5e2db; }
-
-    /* ── NEWSLETTER PAGE ── */
     .newsletter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 700px) { .newsletter-grid { grid-template-columns: 1fr; } }
-
-    /* Deal cards */
     .deal-card { background: #fff; border: 0.5px solid #e5e2db; border-radius: 10px; padding: 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; transition: box-shadow 0.15s; }
     .deal-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
     .deal-sector-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
@@ -42,15 +31,14 @@
     .badge-Shipping { background: #FAEEDA; color: #633806; }
     .badge-Engines { background: #EEEDFE; color: #3C3489; }
     .deal-body .deal-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; line-height: 1.4; }
-    .deal-body .deal-meta { font-size: 11px; color: #9ca3af; }
-
-    /* News cards */
+    .deal-body .deal-meta { font-size: 11px; color: #9ca3af; margin-bottom: 4px; }
     .news-card { background: #fff; border-left: 3px solid #0f1923; padding: 14px 16px; margin-bottom: 12px; }
     .news-tag { font-size: 10px; font-weight: 700; color: #4a7fa8; letter-spacing: 0.1em; margin-bottom: 4px; }
     .news-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; line-height: 1.4; }
-    .news-body { font-size: 12px; color: #6b7280; line-height: 1.7; }
-
-    /* ── DEALS DATABASE PAGE ── */
+    .news-body { font-size: 12px; color: #6b7280; line-height: 1.7; margin-bottom: 6px; }
+    .source-link { font-size: 11px; color: #4a7fa8; text-decoration: none; display: inline-block; margin-top: 4px; font-weight: 500; }
+    .source-link:hover { text-decoration: underline; }
+    .source-label { font-size: 11px; color: #9ca3af; display: inline-block; margin-top: 4px; }
     .db-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
     .filter-btn { font-size: 11px; padding: 5px 12px; border-radius: 20px; border: 0.5px solid #d1d5db; background: #fff; color: #4b5563; cursor: pointer; transition: all 0.15s; }
     .filter-btn:hover { border-color: #0f1923; color: #0f1923; }
@@ -63,8 +51,6 @@
     .db-table tr:last-child td { border-bottom: none; }
     .db-table tr:hover td { background: #fafaf8; }
     .db-count { font-size: 12px; color: #9ca3af; margin-left: auto; }
-
-    /* ── ARCHIVE PAGE ── */
     .archive-card { background: #fff; border: 0.5px solid #e5e2db; border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: box-shadow 0.15s; }
     .archive-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
     .archive-edition { font-size: 10px; color: #4a7fa8; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 4px; }
@@ -75,7 +61,6 @@
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <span class="nav-logo">RIVE PRIVATE INVESTMENT</span>
   <div class="nav-tabs">
@@ -85,70 +70,25 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-edition">EDITION #01 — 01 JUNE 2026</div>
   <div class="hero-title">European Transport Investment Heats Up</div>
   <div class="hero-meta">3 deals tracked <span>·</span> 3 macro stories <span>·</span> 4 sectors covered</div>
 </div>
 
-<!-- ══ PAGE : NEWSLETTER ══ -->
 <div class="page active" id="page-newsletter">
   <div class="newsletter-grid">
-
-    <!-- Colonne gauche : Deals -->
     <div>
       <div class="section-label">DEALS THIS FORTNIGHT</div>
-      <div id="newsletter-deals"><!-- DEALS_START -->
-      <div class="deal-card">
-        <span class="deal-sector-badge badge-Rail">Rail</span>
-        <div class="deal-body">
-          <div class="deal-title">Conduent sells Public Transit business to Modaxo</div>
-          <div class="deal-meta">US$164m · North America · M&A</div>
-        </div>
-      </div>
-      <div class="deal-card">
-        <span class="deal-sector-badge badge-Rail">Rail</span>
-        <div class="deal-body">
-          <div class="deal-title">Hyundai Rotem signs Ho Chi Minh City metro contract</div>
-          <div class="deal-meta">491bn won · Vietnam · Infrastructure</div>
-        </div>
-      </div>
-      <div class="deal-card">
-        <span class="deal-sector-badge badge-Shipping">Shipping</span>
-        <div class="deal-body">
-          <div class="deal-title">Wah Kwong orders up to four tankers at DSIC</div>
-          <div class="deal-meta">Unknown · China · Infrastructure</div>
-        </div>
-      </div><!-- DEALS_END --></div>
+      <div id="newsletter-deals"><!-- DEALS_START --><!-- DEALS_END --></div>
     </div>
-
-    <!-- Colonne droite : Macro -->
     <div>
       <div class="section-label">MACRO & GEOPOLITICS</div>
-		
-      <!-- MACRO_START -->
-      <div class="news-card">
-        <div class="news-tag">INFRASTRUCTURE</div>
-        <div class="news-title">Ireland's Cork commuter rail upgrade gains momentum</div>
-        <div class="news-body">Iarnród Éireann's €1.8bn upgrade programme for Cork's commuter rail network is progressing, with the first two new stations expected to open by 2028-29. This investment in rail infrastructure may create opportunities for investors in European transport projects, particularly in countries with growing populations and urbanization. The upgrade will also improve the overall efficiency and sustainability of the rail network.</div>
-      </div>
-      <div class="news-card">
-        <div class="news-tag">GEOPOLITICS</div>
-        <div class="news-title">Middle East tensions impact shipping routes</div>
-        <div class="news-body">The ongoing conflict in the Middle East has led to increased risks for shipping in the Strait of Hormuz, with reports of floating sea mines and tanker attacks. Investors should be aware of the potential impact on global trade and energy prices, as well as the need for diversified shipping routes and risk management strategies. The situation may also create opportunities for investment in alternative energy sources and more secure transportation infrastructure.</div>
-      </div>
-      <div class="news-card">
-        <div class="news-tag">TECHNOLOGY</div>
-        <div class="news-title">Digitalization transforms rail maintenance and safety</div>
-        <div class="news-body">Advances in condition monitoring data and automation are revolutionizing the way rail infrastructure is maintained and managed. Investors may benefit from the growth in rail technology companies, such as MerMec, which are developing innovative solutions for predictive maintenance and safety ecosystem creation. The digitalization of rail maintenance also has the potential to reduce costs and improve overall network efficiency.</div>
-      </div><!-- MACRO_END -->
-
+      <!-- MACRO_START --><!-- MACRO_END -->
     </div>
   </div>
 </div>
 
-<!-- ══ PAGE : DEALS DATABASE ══ -->
 <div class="page" id="page-database">
   <div class="db-controls">
     <button class="filter-btn active" onclick="filterDeals('All')">All</button>
@@ -175,7 +115,6 @@
   </table>
 </div>
 
-<!-- ══ PAGE : ARCHIVE ══ -->
 <div class="page" id="page-archive">
   <div class="section-label">ALL EDITIONS</div>
   <div id="archive-list">
@@ -187,28 +126,22 @@
       </div>
       <span class="archive-arrow">→</span>
     </div>
-   </div>
+  </div>
 </div>
 
 <script>
-  // ── NAVIGATION ──
   function showPage(name) {
-    // Cache toutes les pages et désactive tous les onglets
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    // Affiche la bonne page et active le bon onglet
     document.getElementById('page-' + name).classList.add('active');
     event.target.classList.add('active');
-    // Cache le hero sur les pages autres que newsletter
     document.getElementById('hero').style.display = name === 'newsletter' ? 'block' : 'none';
   }
 
-  // ── CHARGEMENT DES DEALS ──
   let allDeals = [];
   let currentFilter = 'All';
   let currentSearch = '';
 
-  // Charge le fichier deals.json et construit les affichages
   fetch('deals.json')
     .then(r => r.json())
     .then(data => {
@@ -217,7 +150,6 @@
       renderDatabase(allDeals);
     });
 
-  // Affiche les deals dans la newsletter (colonne gauche)
   function renderNewsletterDeals(deals) {
     const container = document.getElementById('newsletter-deals');
     container.innerHTML = deals.map(d => `
@@ -226,12 +158,15 @@
         <div class="deal-body">
           <div class="deal-title">${d.title}</div>
           <div class="deal-meta">${d.value} · ${d.geography} · ${d.type}</div>
+          ${d.source_url
+            ? `<a href="${d.source_url}" target="_blank" class="source-link">↗ ${d.source}</a>`
+            : `<span class="source-label">${d.source || ''}</span>`
+          }
         </div>
       </div>
     `).join('');
   }
 
-  // Affiche les deals dans la base de données (tableau)
   function renderDatabase(deals) {
     const tbody = document.getElementById('db-tbody');
     const count = document.getElementById('db-count');
@@ -239,23 +174,28 @@
     tbody.innerHTML = deals.map(d => `
       <tr>
         <td>${d.date}</td>
-        <td><strong>${d.title}</strong><br><span style="color:#9ca3af;font-size:11px">${d.summary}</span></td>
+        <td>
+          <strong>${d.title}</strong><br>
+          <span style="color:#9ca3af;font-size:11px">${d.summary || ''}</span>
+        </td>
         <td><span class="deal-sector-badge badge-${d.sector}">${d.sector}</span></td>
         <td>${d.type}</td>
         <td>${d.value}</td>
         <td>${d.geography}</td>
-        <td style="color:#9ca3af">${d.source}</td>
+        <td>${d.source_url
+          ? `<a href="${d.source_url}" target="_blank" class="source-link">↗ ${d.source}</a>`
+          : `<span style="color:#9ca3af">${d.source || ''}</span>`
+        }</td>
       </tr>
     `).join('');
   }
 
-  // ── FILTRES & RECHERCHE ──
   function applyFilters() {
     let filtered = allDeals;
     if (currentFilter !== 'All') filtered = filtered.filter(d => d.sector === currentFilter);
     if (currentSearch) filtered = filtered.filter(d =>
       d.title.toLowerCase().includes(currentSearch) ||
-      d.summary.toLowerCase().includes(currentSearch) ||
+      (d.summary || '').toLowerCase().includes(currentSearch) ||
       d.geography.toLowerCase().includes(currentSearch)
     );
     renderDatabase(filtered);

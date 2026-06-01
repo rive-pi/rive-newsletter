@@ -1,0 +1,11 @@
+# MANUEL INPUT — Rive Private Investment Newsletter
+# ============================================================
+# Ajoute ici les deals ou news que tu veux inclure dans la prochaine édition.
+# Format libre — écris simplement ce que tu sais, Gemini s'occupe du reste.
+# Supprime le contenu après chaque génération.
+# ============================================================
+
+# EXEMPLE (supprime ces lignes avant de lancer) :
+# Deal: Aeroports de Paris acquires 20% stake in Copenhagen Airport for €800M
+# Source: Les Echos
+# Note: Strategic move ahead of TEN-T renegotiations

@@ -1,6 +1,39 @@
 {
   "deals": [
     {
+      "title": "Wah Kwong orders up to four tankers at DSIC",
+      "sector": "Shipping",
+      "type": "Infrastructure",
+      "value": "Unknown",
+      "geography": "China",
+      "summary": "Wah Kwong, a Hong Kong shipowner, has placed an order for up to four tankers at the Chinese shipyard DSIC. This deal indicates the ongoing recovery in the shipping sector, driven by increasing demand for energy transportation. Investors may benefit from the growth in tanker orders and the potential for rising freight rates.",
+      "id": 7,
+      "date": "2026-06-01",
+      "source": "Rive Research"
+    },
+    {
+      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
+      "sector": "Rail",
+      "type": "Infrastructure",
+      "value": "491bn won",
+      "geography": "Vietnam",
+      "summary": "Hyundai Rotem has signed a major contract to supply driverless metro trainsets for Ho Chi Minh City's metro Line 2. This deal demonstrates the growing demand for modern rail infrastructure in emerging markets and may attract investors to similar projects in the region. Hyundai Rotem's expansion into Vietnam also highlights the increasing competitiveness of Asian rail manufacturers.",
+      "id": 6,
+      "date": "2026-06-01",
+      "source": "Rive Research"
+    },
+    {
+      "title": "Conduent sells Public Transit business to Modaxo",
+      "sector": "Rail",
+      "type": "M&A",
+      "value": "US$164m",
+      "geography": "North America",
+      "summary": "Conduent has sold its Public Transit business to Modaxo, a Canadian passenger transport technology group, for US$164m. This deal highlights the ongoing consolidation in the rail technology sector and may create opportunities for investors in similar businesses. The sale also allows Conduent to focus on its core operations.",
+      "id": 5,
+      "date": "2026-06-01",
+      "source": "Rive Research"
+    },
+    {
       "id": 1,
       "date": "2026-05-28",
       "title": "Alstom acquires Bombardier EU maintenance contracts",

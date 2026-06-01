@@ -3,45 +3,57 @@
   "edition_title": "European Transport Investment Heats Up",
   "deals": [
     {
-      "title": "Conduent sells Public Transit business to Modaxo",
-      "sector": "Rail",
-      "type": "M&A",
-      "value": "US$164m",
-      "geography": "North America",
-      "summary": "Conduent divests its Public Transit division to Modaxo in a US$164m deal, marking a consolidation move in transit technology services."
-    },
-    {
-      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
-      "sector": "Rail",
-      "type": "Infrastructure",
-      "value": "491bn won",
-      "geography": "Vietnam",
-      "summary": "Hyundai Rotem secures a major metro contract in Ho Chi Minh City, expanding its footprint in Southeast Asian urban rail infrastructure."
-    },
-    {
       "title": "Wah Kwong orders up to four tankers at DSIC",
       "sector": "Shipping",
       "type": "Infrastructure",
       "value": "Unknown",
       "geography": "China",
-      "summary": "Hong Kong-based Wah Kwong places an order for up to four tankers at Dalian Shipbuilding, signalling continued fleet expansion appetite despite market uncertainty."
+      "summary": "Wah Kwong Maritime Transport has placed an order for two 114,000 dwt LR2 tankers at DSIC, with options for two additional vessels. The newbuildings feature LNG-ready and methanol-ready designs compliant with IMO Tier III and EEDI Phase 3 standards, reflecting continued fleet renewal appetite and a push toward future-fuel readiness.",
+      "source": "Splash247",
+      "source_url": "https://splash247.com/wah-kwong-places-lr2-tanker-order-at-dsic/"
+    },
+    {
+      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
+      "sector": "Rail",
+      "type": "Infrastructure",
+      "value": "491bn won (~$332M)",
+      "geography": "Vietnam",
+      "summary": "Hyundai Rotem signed a 491bn won contract with THACO Group to supply driverless metro trainsets for Ho Chi Minh City Metro Line 2, marking South Korea's first rolling stock export to Vietnam. The deal includes a local manufacturing component and an MoU for signalling systems, positioning Hyundai Rotem as a key player in Southeast Asia's fast-growing urban rail market.",
+      "source": "Railway Gazette",
+      "source_url": "https://www.railwaygazette.com/high-speed/2026/06/01/hyundai-rotem-signs-ho-chi-minh-city-metro-contract-as-it-builds-foothold-for-expansion/"
+    },
+    {
+      "title": "Conduent sells Public Transit business to Modaxo",
+      "sector": "Rail",
+      "type": "M&A",
+      "value": "US$164M",
+      "geography": "North America",
+      "summary": "Conduent agreed to sell its Public Transit division — covering transit fare management and fleet management solutions — to Modaxo for $164M. The divestiture is part of Conduent's portfolio simplification strategy and is expected to close before end of 2026, pending regulatory approval.",
+      "source": "Conduent IR",
+      "source_url": "https://investor.conduent.com/news-releases/news-release-details/conduent-announces-agreement-sell-its-public-transit-business"
     }
   ],
   "macro_stories": [
     {
       "tag": "INFRASTRUCTURE",
       "title": "Ireland's Cork commuter rail upgrade gains momentum",
-      "body": "Iarnród Éireann's €1.8bn upgrade programme for Cork's commuter rail network is progressing, with the first two new stations expected to open by 2028-29. This investment in rail infrastructure may create opportunities for investors in European transport projects, particularly in countries with growing populations and urbanization."
+      "body": "Iarnród Éireann's €1.8bn upgrade programme for Cork's commuter rail network is progressing, with planning applications submitted for two accelerated stations at Blackpool and Dunkettle. Phase 2 will deliver electrification, 6 new stations and 10-minute frequency across three commuter lines — a template for mid-sized European city rail investment.",
+      "source": "Irish Rail",
+      "source_url": "https://www.irishrail.ie/en-ie/news/two-new-train-stations-for-cork-set-to-enter-planning-phase"
     },
     {
       "tag": "GEOPOLITICS",
-      "title": "Middle East tensions impact shipping routes",
-      "body": "The ongoing conflict in the Middle East has led to increased risks for shipping in the Strait of Hormuz, with reports of floating sea mines and tanker attacks. Investors should be aware of the potential impact on global trade and energy prices, as well as the need for diversified shipping routes and risk management strategies."
+      "title": "Strait of Hormuz crisis reshapes tanker market dynamics",
+      "body": "Since February 2026, Iranian IRGC disruption of the Strait of Hormuz — through vessel attacks, naval mines and a de facto blockade — has reduced daily transits to near zero. With ~20% of global oil and LNG typically flowing through the strait, tanker owners face acute route diversification pressure and a bifurcated freight rate environment.",
+      "source": "Wikipedia / Security Council Report",
+      "source_url": "https://www.securitycouncilreport.org/monthly-forecast/2026-04/maritime-security-4.php"
     },
     {
       "tag": "TECHNOLOGY",
-      "title": "Digitalization transforms rail maintenance and safety",
-      "body": "Advances in condition monitoring data and automation are revolutionizing the way rail infrastructure is maintained and managed. Investors may benefit from the growth in rail technology companies developing innovative solutions for predictive maintenance and safety ecosystem creation."
+      "title": "Siemens acquires MerMec as rail digitalization accelerates",
+      "body": "Siemens Mobility has agreed to acquire key operations from Italy's MerMec Group — covering railway diagnostics, condition monitoring and signalling — in a deal expected to close end-2026. The move consolidates the emerging predictive maintenance sector and signals growing investor appetite for digital rail infrastructure plays.",
+      "source": "Railway Supply",
+      "source_url": "https://www.railway.supply/siemens-mobility-to-buy-mermec-businesses-in-italy/"
     }
   ]
 }

@@ -1,81 +1,40 @@
 {
   "deals": [
     {
+      "id": 3,
+      "date": "2026-06-01",
       "title": "Wah Kwong orders up to four tankers at DSIC",
       "sector": "Shipping",
       "type": "Infrastructure",
       "value": "Unknown",
       "geography": "China",
-      "summary": "Wah Kwong, a Hong Kong shipowner, has placed an order for up to four tankers at the Chinese shipyard DSIC. This deal indicates the ongoing recovery in the shipping sector, driven by increasing demand for energy transportation. Investors may benefit from the growth in tanker orders and the potential for rising freight rates.",
-      "id": 7,
-      "date": "2026-06-01",
-      "source": "Rive Research"
-    },
-    {
-      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
-      "sector": "Rail",
-      "type": "Infrastructure",
-      "value": "491bn won",
-      "geography": "Vietnam",
-      "summary": "Hyundai Rotem has signed a major contract to supply driverless metro trainsets for Ho Chi Minh City's metro Line 2. This deal demonstrates the growing demand for modern rail infrastructure in emerging markets and may attract investors to similar projects in the region. Hyundai Rotem's expansion into Vietnam also highlights the increasing competitiveness of Asian rail manufacturers.",
-      "id": 6,
-      "date": "2026-06-01",
-      "source": "Rive Research"
-    },
-    {
-      "title": "Conduent sells Public Transit business to Modaxo",
-      "sector": "Rail",
-      "type": "M&A",
-      "value": "US$164m",
-      "geography": "North America",
-      "summary": "Conduent has sold its Public Transit business to Modaxo, a Canadian passenger transport technology group, for US$164m. This deal highlights the ongoing consolidation in the rail technology sector and may create opportunities for investors in similar businesses. The sale also allows Conduent to focus on its core operations.",
-      "id": 5,
-      "date": "2026-06-01",
-      "source": "Rive Research"
-    },
-    {
-      "id": 1,
-      "date": "2026-05-28",
-      "title": "Alstom acquires Bombardier EU maintenance contracts",
-      "sector": "Rail",
-      "type": "M&A",
-      "value": "€340M",
-      "geography": "France / Germany",
-      "summary": "Alstom strengthens its European maintenance footprint by acquiring the remaining EU maintenance contracts from Bombardier Transportation, covering 12 depots across France and Germany.",
-      "source": "Reuters"
+      "summary": "Wah Kwong Maritime Transport has placed an order for two 114,000 dwt LR2 tankers at DSIC, with options for two additional vessels. The newbuildings feature LNG-ready and methanol-ready designs compliant with IMO Tier III and EEDI Phase 3 standards, reflecting continued fleet renewal appetite and a push toward future-fuel readiness.",
+      "source": "Splash247",
+      "source_url": "https://splash247.com/wah-kwong-places-lr2-tanker-order-at-dsic/"
     },
     {
       "id": 2,
-      "date": "2026-05-20",
-      "title": "Nordic Aviation Capital raises €1.2B green bond",
-      "sector": "Aviation",
-      "type": "Debt Raise",
-      "value": "€1.2B",
-      "geography": "Pan-Europe",
-      "summary": "NAC closes its largest ever green bond issuance to fund the acquisition of next-generation narrow-body aircraft, targeting A320neo and 737 MAX deliveries through 2028.",
-      "source": "Financial Times"
-    },
-    {
-      "id": 3,
-      "date": "2026-05-15",
-      "title": "CMA CGM acquires Hamburg Sud feeder network",
-      "sector": "Shipping",
-      "type": "M&A",
-      "value": "€890M",
-      "geography": "Northern Europe",
-      "summary": "CMA CGM expands its Northern European short-sea presence with the acquisition of Hamburg Sud's feeder network, adding 23 vessels and 8 port concessions.",
-      "source": "Lloyd's List"
-    },
-    {
-      "id": 4,
-      "date": "2026-05-10",
-      "title": "Safran & MTU expand CFM LEAP MRO joint venture in Poland",
-      "sector": "Engines",
+      "date": "2026-06-01",
+      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
+      "sector": "Rail",
       "type": "Infrastructure",
-      "value": "€210M",
-      "geography": "Poland",
-      "summary": "Safran Aircraft Engines and MTU Aero Engines commit €210M capex to expand their joint MRO facility in Warsaw, doubling LEAP engine overhaul capacity to meet surging demand.",
-      "source": "Aviation Week"
+      "value": "491bn won (~$332M)",
+      "geography": "Vietnam",
+      "summary": "Hyundai Rotem signed a 491bn won contract with THACO Group to supply driverless metro trainsets for Ho Chi Minh City Metro Line 2, marking South Korea's first rolling stock export to Vietnam. The deal includes a local manufacturing component and an MoU for signalling systems, positioning Hyundai Rotem as a key player in Southeast Asia's fast-growing urban rail market.",
+      "source": "Railway Gazette",
+      "source_url": "https://www.railwaygazette.com/high-speed/2026/06/01/hyundai-rotem-signs-ho-chi-minh-city-metro-contract-as-it-builds-foothold-for-expansion/"
+    },
+    {
+      "id": 1,
+      "date": "2026-06-01",
+      "title": "Conduent sells Public Transit business to Modaxo",
+      "sector": "Rail",
+      "type": "M&A",
+      "value": "US$164M",
+      "geography": "North America",
+      "summary": "Conduent agreed to sell its Public Transit division — covering transit fare management and fleet management solutions — to Modaxo for $164M. The divestiture is part of Conduent's portfolio simplification strategy and is expected to close before end of 2026, pending regulatory approval.",
+      "source": "Conduent IR",
+      "source_url": "https://investor.conduent.com/news-releases/news-release-details/conduent-announces-agreement-sell-its-public-transit-business"
     }
   ]
 }

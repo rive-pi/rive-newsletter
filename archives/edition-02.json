@@ -1,0 +1,65 @@
+{
+  "edition_label": "EDITION #02 — 01 JUNE 2026",
+  "edition_title": "European Transport Deals Gain Momentum",
+  "deals": [
+    {
+      "title": "Conduent Sells Public Transit Business to Modaxo",
+      "sector": "Rail",
+      "type": "M&A",
+      "value": "$164m",
+      "geography": "North America",
+      "summary": "Conduent Inc has sold its Public Transit business to Modaxo for $164m, marking a significant deal in the rail sector. This acquisition will enable Modaxo to expand its presence in the passenger transport technology market. The deal highlights the ongoing consolidation in the industry, presenting opportunities for investors to capitalize on the growing demand for efficient public transit systems.",
+      "source": "Railway Gazette",
+      "source_url": "https://www.railwaygazette.com/business/2026/06/01/conduent-to-sell-public-transit-business-to-modaxo-for-us164m/",
+      "id": 4,
+      "date": "2026-06-01"
+    },
+    {
+      "title": "Hyundai Rotem Signs Ho Chi Minh City Metro Contract",
+      "sector": "Rail",
+      "type": "Infrastructure",
+      "value": "491bn won",
+      "geography": "Vietnam",
+      "summary": "Hyundai Rotem has signed a 491bn won contract to supply driverless metro trainsets for Ho Chi Minh City's metro Line 2. This deal underscores the growing investments in rail infrastructure in Southeast Asia, driven by urbanization and increasing demand for efficient public transportation. Investors can expect significant opportunities in the region's rail sector, particularly in countries like Vietnam and Indonesia.",
+      "source": "Railway Gazette",
+      "source_url": "https://www.railwaygazette.com/high-speed/2026/06/01/hyundai-rotem-signs-ho-chi-minh-city-metro-contract-as-it-builds-foothold-for-expansion/",
+      "id": 5,
+      "date": "2026-06-01"
+    },
+    {
+      "title": "Wah Kwong Orders Up to Four Tankers at DSIC",
+      "sector": "Shipping",
+      "type": "Infrastructure",
+      "value": "Unknown",
+      "geography": "China",
+      "summary": "Wah Kwong has placed an order for up to four tankers at Dalian Shipbuilding Industry Co (DSIC), expanding its LR2 product tanker fleet. This move indicates a positive outlook for the shipping industry, driven by increasing demand for oil and petroleum products. Investors can expect a rise in investments in the shipping sector, particularly in the tanker market, as companies strive to capitalize on the growing demand.",
+      "source": "Seatrade Maritime",
+      "source_url": "https://www.seatrade-maritime.com/tankers/wah-kwong-ordering-up-to-four-tankers-at-dsic",
+      "id": 6,
+      "date": "2026-06-01"
+    }
+  ],
+  "macro_stories": [
+    {
+      "tag": "GEOPOLITICS",
+      "title": "Strait of Hormuz Tensions Impact Shipping",
+      "body": "The ongoing tensions in the Strait of Hormuz are significantly impacting the shipping industry, with reports of mines sighted in the region. This has led to increased costs and risks for shipowners and investors, highlighting the need for diversified investment portfolios and robust risk management strategies. As the situation continues to unfold, investors must remain vigilant and adapt to the changing landscape.",
+      "source": "Seatrade Maritime",
+      "source_url": "https://www.seatrade-maritime.com/security/oman-warns-of-mines-sighted-in-strait-of-hormuz"
+    },
+    {
+      "tag": "REGULATION",
+      "title": "Green Shipping Corridor Development",
+      "body": "Brazil, Norway, and the Netherlands have announced plans to develop a green shipping corridor, marking a significant step towards reducing emissions in the shipping industry. This initiative highlights the growing focus on sustainability and environmental regulations in the sector, presenting opportunities for investors to capitalize on the development of eco-friendly technologies and infrastructure.",
+      "source": "Seatrade Maritime",
+      "source_url": "https://www.seatrade-maritime.com/green-shipping/brazil-norway-and-netherlands-to-develop-green-shipping-corridor"
+    },
+    {
+      "tag": "INFRASTRUCTURE",
+      "title": "European Rail Infrastructure Investments",
+      "body": "The European rail sector is witnessing significant investments in infrastructure, driven by the need for efficient and sustainable transportation systems. The planned upgrade of Cork's commuter rail network and the development of green shipping corridors are examples of such initiatives. Investors can expect a rise in investments in the rail and shipping sectors, particularly in infrastructure development, as governments and companies strive to meet the growing demand for sustainable transportation.",
+      "source": "Railway Gazette",
+      "source_url": "https://www.railwaygazette.com/suburban-commuter-rail/2026/06/01/first-new-stations-under-major-cork-commuter-rail-upgrade-targeted-for-2028-29/"
+    }
+  ]
+}

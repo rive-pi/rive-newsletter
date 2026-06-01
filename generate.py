@@ -1,6 +1,6 @@
 # ============================================================
 # generate.py — Générateur de newsletter Rive Private Investment
-# Version finale avec ajout manuel
+# Version finale avec liens sources
 # ============================================================
 
 import json
@@ -16,7 +16,6 @@ from groq import Groq
 # ── CONFIGURATION ──
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
 
 # ── SOURCES RSS ──
 SOURCES = [
@@ -79,6 +78,7 @@ KEYWORDS = [
 def collect_articles():
     """
     Parcourt chaque source RSS et filtre les articles pertinents.
+    Conserve le lien de chaque article pour les URLs sources.
     """
     articles = []
 
@@ -90,6 +90,7 @@ def collect_articles():
             for entry in feed.entries:
                 title = entry.get("title", "")
                 summary = entry.get("summary", "")
+                link = entry.get("link", "")
                 text = (title + " " + summary).lower()
 
                 is_relevant = any(kw.lower() in text for kw in KEYWORDS)
@@ -99,7 +100,7 @@ def collect_articles():
                         "source": source["name"],
                         "title": title,
                         "summary": summary,
-                        "link": entry.get("link", ""),
+                        "link": link,
                         "sectors": source["sectors"]
                     })
 
@@ -118,7 +119,6 @@ def read_manual_input():
     """
     Lit le fichier manual_input.txt et retourne son contenu.
     Ignore les lignes qui commencent par # (commentaires).
-    Vide le fichier après lecture pour éviter les doublons.
     """
     if not os.path.exists("manual_input.txt"):
         return ""
@@ -126,7 +126,6 @@ def read_manual_input():
     with open("manual_input.txt", "r", encoding="utf-8") as f:
         lines = f.readlines()
 
-    # On garde uniquement les lignes qui ne sont pas des commentaires
     content_lines = [
         line for line in lines
         if not line.strip().startswith("#") and line.strip() != ""
@@ -143,17 +142,19 @@ def read_manual_input():
 
 
 # ============================================================
-# ÉTAPE 2 — GÉNÉRATION PAR GEMINI
+# ÉTAPE 2 — GÉNÉRATION PAR GROQ
 # ============================================================
 def generate_newsletter(articles, manual_content=""):
     """
-    Envoie les articles et le contenu manuel à Gemini
-    pour générer la newsletter en JSON structuré.
+    Envoie les articles et le contenu manuel à Groq
+    pour générer la newsletter en JSON structuré avec liens sources.
     """
-    # Résumé des articles RSS
+    # Résumé des articles RSS avec leurs liens
     articles_text = ""
     for i, a in enumerate(articles[:20]):
-        articles_text += f"\n[{i+1}] {a['title']} ({a['source']})\n{a['summary']}\n"
+        articles_text += f"\n[{i+1}] {a['title']} ({a['source']})\n"
+        articles_text += f"URL: {a['link']}\n"
+        articles_text += f"{a['summary']}\n"
 
     # Section manuelle si elle existe
     manual_section = ""
@@ -172,7 +173,7 @@ Sectors covered: Rail, Aviation (aircraft & helicopters), Shipping (maritime), A
 Focus: Europe primarily.
 Audience: senior investment professionals, very busy, need concise sharp insights.
 
-Based on these recent news articles:
+Based on these recent news articles (each with its URL):
 {articles_text}
 {manual_section}
 
@@ -186,14 +187,18 @@ Generate a newsletter in this EXACT JSON format (pure JSON only, no markdown, no
       "type": "M&A|Debt Raise|Infrastructure|Equity|IPO|Other",
       "value": "€XM or Unknown",
       "geography": "Country or Region",
-      "summary": "2-3 sentences on what happened and why it matters for investors"
+      "summary": "2-3 sentences on what happened and why it matters for investors",
+      "source": "Publication name",
+      "source_url": "exact URL of the source article, or empty string if unknown"
     }}
   ],
   "macro_stories": [
     {{
       "tag": "REGULATION|MARKET|GEOPOLITICS|INFRASTRUCTURE|TECHNOLOGY",
       "title": "Story headline — sharp and specific",
-      "body": "2-3 sentences with clear investment angle or implication"
+      "body": "2-3 sentences with clear investment angle or implication",
+      "source": "Publication name",
+      "source_url": "exact URL of the source article, or empty string if unknown"
     }}
   ]
 }}
@@ -206,14 +211,15 @@ Rules:
 - Sharp professional English, active voice
 - If news is insufficient for a sector, omit rather than invent
 - Prioritize manually added content if provided
+- Use the article URLs provided above as source_url values where relevant
 """
 
-    print("  → Envoi à Gemini...")
+    print("  → Envoi à Groq...")
     response = client.chat.completions.create(
-    model="llama-3.3-70b-versatile",
-    messages=[{"role": "user", "content": prompt}],
-    temperature=0.7
-)
+        model="llama-3.3-70b-versatile",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7
+    )
 
     # Nettoyage de la réponse
     text = response.choices[0].message.content.strip()
@@ -224,7 +230,7 @@ Rules:
     text = text.strip()
 
     data = json.loads(text)
-    print("  ✓ Newsletter générée par Gemini")
+    print("  ✓ Newsletter générée par Groq")
     return data
 
 
@@ -244,9 +250,10 @@ def update_deals_json(new_deals):
     for deal in new_deals:
         deal["id"] = next_id
         deal["date"] = today
-        # On ajoute le champ source s'il manque
         if "source" not in deal:
             deal["source"] = "Rive Research"
+        if "source_url" not in deal:
+            deal["source_url"] = ""
         existing["deals"].insert(0, deal)
         next_id += 1
 
@@ -256,20 +263,19 @@ def update_deals_json(new_deals):
     print(f"  ✓ {len(new_deals)} nouveaux deals ajoutés à deals.json")
     return len(existing["deals"])
 
+
 # ============================================================
 # ÉTAPE 3B — SAUVEGARDE DE L'ARCHIVE
 # ============================================================
 def save_archive(content, edition_number):
     """
     Sauvegarde le contenu de l'édition dans archives/
-    sous forme de fichier JSON et copie le template HTML.
+    sous forme de fichier JSON et crée la page HTML correspondante.
     """
     import shutil
 
-    # Crée le dossier archives s'il n'existe pas
     os.makedirs("archives", exist_ok=True)
 
-    # Sauvegarde le JSON de l'édition
     today_display = datetime.date.today().strftime("%d %B %Y").upper()
     archive_data = {
         "edition_label": f"EDITION #{edition_number:02d} — {today_display}",
@@ -278,11 +284,12 @@ def save_archive(content, edition_number):
         "macro_stories": content["macro_stories"]
     }
 
+    # Sauvegarde le JSON
     json_path = f"archives/edition-{edition_number:02d}.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(archive_data, f, ensure_ascii=False, indent=2)
 
-    # Copie le template HTML en remplaçant le numéro d'édition
+    # Crée la page HTML à partir du template edition-01.html
     template_path = "archives/edition-01.html"
     new_html_path = f"archives/edition-{edition_number:02d}.html"
 
@@ -295,40 +302,53 @@ def save_archive(content, edition_number):
 
     print(f"  ✓ Archive edition-{edition_number:02d} sauvegardée")
 
+
 # ============================================================
 # ÉTAPE 4 — MISE À JOUR DE INDEX.HTML
 # ============================================================
 def update_index_html(content, edition_number, total_deals):
     """
-    Met à jour le hero, les deals et les articles macro dans index.html.
-    Met aussi à jour l'archive avec la nouvelle édition.
+    Met à jour le hero, les deals, les macros et l'archive dans index.html.
     """
     today_display = datetime.date.today().strftime("%d %B %Y").upper()
-    today_iso = datetime.date.today().isoformat()
 
-    # ── HTML des deals pour la newsletter ──
+    # ── HTML des deals avec liens sources ──
     deals_html = ""
     for d in content["deals"]:
+        source_html = ""
+        if d.get("source_url"):
+            source_html = f'<a href="{d["source_url"]}" target="_blank" class="source-link">↗ {d.get("source", "Source")}</a>'
+        elif d.get("source"):
+            source_html = f'<span class="source-label">{d["source"]}</span>'
+
         deals_html += f"""
       <div class="deal-card">
         <span class="deal-sector-badge badge-{d['sector']}">{d['sector']}</span>
         <div class="deal-body">
           <div class="deal-title">{d['title']}</div>
           <div class="deal-meta">{d['value']} · {d['geography']} · {d['type']}</div>
+          {source_html}
         </div>
       </div>"""
 
-    # ── HTML des articles macro ──
+    # ── HTML des macros avec liens sources ──
     macro_html = ""
     for m in content["macro_stories"]:
+        source_html = ""
+        if m.get("source_url"):
+            source_html = f'<a href="{m["source_url"]}" target="_blank" class="source-link">↗ {m.get("source", "Source")}</a>'
+        elif m.get("source"):
+            source_html = f'<span class="source-label">{m["source"]}</span>'
+
         macro_html += f"""
       <div class="news-card">
         <div class="news-tag">{m['tag']}</div>
         <div class="news-title">{m['title']}</div>
         <div class="news-body">{m['body']}</div>
+        {source_html}
       </div>"""
 
-    # ── Lecture du fichier HTML ──
+    # ── Lecture du HTML ──
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
 
@@ -357,7 +377,7 @@ def update_index_html(content, edition_number, total_deals):
         flags=re.DOTALL
     )
 
-    # ── Mise à jour des articles macro ──
+    # ── Mise à jour des macros ──
     html = re.sub(
         r'<!-- MACRO_START -->.*?<!-- MACRO_END -->',
         f'<!-- MACRO_START -->{macro_html}<!-- MACRO_END -->',
@@ -367,7 +387,7 @@ def update_index_html(content, edition_number, total_deals):
 
     # ── Ajout à l'archive ──
     new_archive_card = f"""
-    <div class="archive-card">
+    <div class="archive-card" onclick="window.location='archives/edition-{edition_number:02d}.html'">
       <div>
         <div class="archive-edition">EDITION #{edition_number:02d} — {today_display}</div>
         <div class="archive-title">{content["edition_title"]}</div>
@@ -376,15 +396,10 @@ def update_index_html(content, edition_number, total_deals):
       <span class="archive-arrow">→</span>
     </div>"""
 
-new_archive_card = f"""
-    <div class="archive-card" onclick="window.location='archives/edition-{edition_number:02d}.html'">
-      <div>
-        <div class="archive-edition">EDITION #{edition_number:02d} — {today_display}</div>
-        <div class="archive-title">{content["edition_title"]}</div>
-        <div class="archive-meta">{len(content["deals"])} deals · {len(content["macro_stories"])} macro stories</div>
-      </div>
-      <span class="archive-arrow">→</span>
-    </div>"""    
+    html = html.replace(
+        '<div id="archive-list">',
+        f'<div id="archive-list">{new_archive_card}'
+    )
 
     # ── Sauvegarde ──
     with open("index.html", "w", encoding="utf-8") as f:
@@ -432,13 +447,13 @@ def main():
         print("  ⚠ Aucun contenu collecté. Vérifie ta connexion.")
         return
 
-    print("\n[2/4] Génération par Gemini...")
+    print("\n[2/4] Génération par Groq...")
     content = generate_newsletter(articles, manual_content)
 
     print("\n[3/4] Mise à jour des fichiers...")
     total_deals = update_deals_json(content["deals"])
 
-    # Numéro d'édition basé sur le nombre de générations
+    # Numéro d'édition
     edition_number = 1
     if os.path.exists("edition_count.txt"):
         with open("edition_count.txt", "r") as f:

@@ -256,6 +256,44 @@ def update_deals_json(new_deals):
     print(f"  ✓ {len(new_deals)} nouveaux deals ajoutés à deals.json")
     return len(existing["deals"])
 
+# ============================================================
+# ÉTAPE 3B — SAUVEGARDE DE L'ARCHIVE
+# ============================================================
+def save_archive(content, edition_number):
+    """
+    Sauvegarde le contenu de l'édition dans archives/
+    sous forme de fichier JSON et copie le template HTML.
+    """
+    import shutil
+
+    # Crée le dossier archives s'il n'existe pas
+    os.makedirs("archives", exist_ok=True)
+
+    # Sauvegarde le JSON de l'édition
+    today_display = datetime.date.today().strftime("%d %B %Y").upper()
+    archive_data = {
+        "edition_label": f"EDITION #{edition_number:02d} — {today_display}",
+        "edition_title": content["edition_title"],
+        "deals": content["deals"],
+        "macro_stories": content["macro_stories"]
+    }
+
+    json_path = f"archives/edition-{edition_number:02d}.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(archive_data, f, ensure_ascii=False, indent=2)
+
+    # Copie le template HTML en remplaçant le numéro d'édition
+    template_path = "archives/edition-01.html"
+    new_html_path = f"archives/edition-{edition_number:02d}.html"
+
+    if os.path.exists(template_path) and not os.path.exists(new_html_path):
+        with open(template_path, "r", encoding="utf-8") as f:
+            html = f.read()
+        html = html.replace("edition-01.json", f"edition-{edition_number:02d}.json")
+        with open(new_html_path, "w", encoding="utf-8") as f:
+            f.write(html)
+
+    print(f"  ✓ Archive edition-{edition_number:02d} sauvegardée")
 
 # ============================================================
 # ÉTAPE 4 — MISE À JOUR DE INDEX.HTML
@@ -338,10 +376,15 @@ def update_index_html(content, edition_number, total_deals):
       <span class="archive-arrow">→</span>
     </div>"""
 
-    html = html.replace(
-        '<div id="archive-list">',
-        f'<div id="archive-list">{new_archive_card}'
-    )
+new_archive_card = f"""
+    <div class="archive-card" onclick="window.location='archives/edition-{edition_number:02d}.html'">
+      <div>
+        <div class="archive-edition">EDITION #{edition_number:02d} — {today_display}</div>
+        <div class="archive-title">{content["edition_title"]}</div>
+        <div class="archive-meta">{len(content["deals"])} deals · {len(content["macro_stories"])} macro stories</div>
+      </div>
+      <span class="archive-arrow">→</span>
+    </div>"""    
 
     # ── Sauvegarde ──
     with open("index.html", "w", encoding="utf-8") as f:
@@ -403,6 +446,7 @@ def main():
     with open("edition_count.txt", "w") as f:
         f.write(str(edition_number))
 
+    save_archive(content, edition_number)
     update_index_html(content, edition_number, total_deals)
 
     print("\n[4/4] Publication sur GitHub...")

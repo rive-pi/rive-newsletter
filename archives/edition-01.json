@@ -1,0 +1,47 @@
+{
+  "edition_label": "EDITION #01 — 01 JUNE 2026",
+  "edition_title": "European Transport Investment Heats Up",
+  "deals": [
+    {
+      "title": "Conduent sells Public Transit business to Modaxo",
+      "sector": "Rail",
+      "type": "M&A",
+      "value": "US$164m",
+      "geography": "North America",
+      "summary": "Conduent divests its Public Transit division to Modaxo in a US$164m deal, marking a consolidation move in transit technology services."
+    },
+    {
+      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
+      "sector": "Rail",
+      "type": "Infrastructure",
+      "value": "491bn won",
+      "geography": "Vietnam",
+      "summary": "Hyundai Rotem secures a major metro contract in Ho Chi Minh City, expanding its footprint in Southeast Asian urban rail infrastructure."
+    },
+    {
+      "title": "Wah Kwong orders up to four tankers at DSIC",
+      "sector": "Shipping",
+      "type": "Infrastructure",
+      "value": "Unknown",
+      "geography": "China",
+      "summary": "Hong Kong-based Wah Kwong places an order for up to four tankers at Dalian Shipbuilding, signalling continued fleet expansion appetite despite market uncertainty."
+    }
+  ],
+  "macro_stories": [
+    {
+      "tag": "INFRASTRUCTURE",
+      "title": "Ireland's Cork commuter rail upgrade gains momentum",
+      "body": "Iarnród Éireann's €1.8bn upgrade programme for Cork's commuter rail network is progressing, with the first two new stations expected to open by 2028-29. This investment in rail infrastructure may create opportunities for investors in European transport projects, particularly in countries with growing populations and urbanization."
+    },
+    {
+      "tag": "GEOPOLITICS",
+      "title": "Middle East tensions impact shipping routes",
+      "body": "The ongoing conflict in the Middle East has led to increased risks for shipping in the Strait of Hormuz, with reports of floating sea mines and tanker attacks. Investors should be aware of the potential impact on global trade and energy prices, as well as the need for diversified shipping routes and risk management strategies."
+    },
+    {
+      "tag": "TECHNOLOGY",
+      "title": "Digitalization transforms rail maintenance and safety",
+      "body": "Advances in condition monitoring data and automation are revolutionizing the way rail infrastructure is maintained and managed. Investors may benefit from the growth in rail technology companies developing innovative solutions for predictive maintenance and safety ecosystem creation."
+    }
+  ]
+}

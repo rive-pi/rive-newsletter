@@ -1,40 +1,40 @@
 {
   "deals": [
     {
+      "title": "Boeing Signs Agreement with Uganda Airlines for 10 Aircraft",
+      "sector": "Aviation",
+      "type": "Infrastructure",
+      "value": "$985m",
+      "geography": "Uganda",
+      "summary": "Boeing's agreement with Uganda Airlines marks a significant investment in the African aviation sector, with potential implications for European investors. The deal highlights the growing demand for air travel in emerging markets and the importance of strategic partnerships for airlines and manufacturers.",
+      "source": "Journal de l'Aviation",
+      "source_url": "https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html",
       "id": 3,
-      "date": "2026-06-01",
-      "title": "Wah Kwong orders up to four tankers at DSIC",
+      "date": "2026-06-12"
+    },
+    {
+      "title": "Balaena Acquires APCL Group for $200m",
+      "sector": "Shipping",
+      "type": "M&A",
+      "value": "$200m",
+      "geography": "UK",
+      "summary": "Balaena's acquisition of APCL Group expands its repair capacity and targets new markets, highlighting the growing demand for ship repair and maintenance services in Europe. This deal demonstrates the ongoing consolidation in the shipping industry and the importance of strategic acquisitions for investors.",
+      "source": "Seatrade Maritime",
+      "source_url": "https://www.seatrade-maritime.com/shipyards/balaena-acquiring-apcl-group-for-200m-boosting-repair-capacity",
+      "id": 2,
+      "date": "2026-06-12"
+    },
+    {
+      "title": "Hyundai Glovis to Develop Vehicle Hub at Port of Amsterdam",
       "sector": "Shipping",
       "type": "Infrastructure",
       "value": "Unknown",
-      "geography": "China",
-      "summary": "Wah Kwong Maritime Transport has placed an order for two 114,000 dwt LR2 tankers at DSIC, with options for two additional vessels. The newbuildings feature LNG-ready and methanol-ready designs compliant with IMO Tier III and EEDI Phase 3 standards, reflecting continued fleet renewal appetite and a push toward future-fuel readiness.",
-      "source": "Splash247",
-      "source_url": "https://splash247.com/wah-kwong-places-lr2-tanker-order-at-dsic/"
-    },
-    {
-      "id": 2,
-      "date": "2026-06-01",
-      "title": "Hyundai Rotem signs Ho Chi Minh City metro contract",
-      "sector": "Rail",
-      "type": "Infrastructure",
-      "value": "491bn won (~$332M)",
-      "geography": "Vietnam",
-      "summary": "Hyundai Rotem signed a 491bn won contract with THACO Group to supply driverless metro trainsets for Ho Chi Minh City Metro Line 2, marking South Korea's first rolling stock export to Vietnam. The deal includes a local manufacturing component and an MoU for signalling systems, positioning Hyundai Rotem as a key player in Southeast Asia's fast-growing urban rail market.",
-      "source": "Railway Gazette",
-      "source_url": "https://www.railwaygazette.com/high-speed/2026/06/01/hyundai-rotem-signs-ho-chi-minh-city-metro-contract-as-it-builds-foothold-for-expansion/"
-    },
-    {
+      "geography": "Netherlands",
+      "summary": "Hyundai Glovis will operate a 47-hectare land plot within the Port of Amsterdam, enhancing the port's vehicle handling capacity and attracting new investments. This development is expected to increase the port's competitiveness and provide new opportunities for investors. The project underscores the growing importance of strategic infrastructure investments in the European shipping sector.",
+      "source": "Seatrade Maritime",
+      "source_url": "https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam",
       "id": 1,
-      "date": "2026-06-01",
-      "title": "Conduent sells Public Transit business to Modaxo",
-      "sector": "Rail",
-      "type": "M&A",
-      "value": "US$164M",
-      "geography": "North America",
-      "summary": "Conduent agreed to sell its Public Transit division — covering transit fare management and fleet management solutions — to Modaxo for $164M. The divestiture is part of Conduent's portfolio simplification strategy and is expected to close before end of 2026, pending regulatory approval.",
-      "source": "Conduent IR",
-      "source_url": "https://investor.conduent.com/news-releases/news-release-details/conduent-announces-agreement-sell-its-public-transit-business"
+      "date": "2026-06-12"
     }
   ]
 }

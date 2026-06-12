@@ -1,8 +1,3 @@
-# ============================================================
-# generate.py — Générateur de newsletter Rive Private Investment
-# Version finale avec liens sources
-# ============================================================
-
 import json
 import os
 import datetime
@@ -53,7 +48,39 @@ SOURCES = [
         "name": "International Railway Journal",
         "url": "https://www.railjournal.com/feed",
         "sectors": ["Rail"]
-    }
+    },
+
+    # ── NOUVELLES SOURCES (recommandées par l'équipe) ──
+    {
+        "name": "Conoship",
+        "url": "https://www.conoship.com/feed/",
+        "sectors": ["Shipping"]
+    },
+    {
+        "name": "Gama Aviation",
+        "url": "https://www.gamaaviation.com/feed/",
+        "sectors": ["Aviation"]
+    },
+    {
+        "name": "Omni Helicopters International",
+        "url": "https://www.omnihelicoptersinternational.com/feed/",
+        "sectors": ["Aviation"]
+    },
+    {
+        "name": "SMFL Helicopters",
+        "url": "https://smflh.aero/feed/",
+        "sectors": ["Aviation"]
+    },
+    {
+        "name": "Aerobuzz",
+        "url": "https://www.aerobuzz.fr/feed/",
+        "sectors": ["Aviation"]
+    },
+    {
+        "name": "Journal de l'Aviation",
+        "url": "https://www.journal-aviation.com/feed",
+        "sectors": ["Aviation"]
+    },
 ]
 
 # ── MOTS-CLÉS ──
@@ -71,6 +98,65 @@ KEYWORDS = [
     "Spain", "Italy", "Nordic", "Poland", "Scandinavia"
 ]
 
+# ── MOTS-CLÉS NÉGATIFS (uniquement pour Aerobuzz) ──
+# Aerobuzz couvre TOUTE l'actualité aéronautique française (30 articles/flux),
+# y compris l'aviation de loisir, les ULM, et les meetings aériens — hors
+# périmètre pour un fonds de PE infra. On exclut ces articles en plus du
+# filtre par mots-clés positifs ci-dessus.
+AEROBUZZ_EXCLUDE_KEYWORDS = [
+    "ulm", "aéro-club", "aeroclub", "meeting aérien", "voltige",
+    "aviation de loisir", "planeur", "parachut", "montgolfière",
+    "rallye aérien", "fly-in", "fête aérienne"
+]
+
+# ── PARAMÈTRES DE SÉLECTION DES ARTICLES ──
+# Nombre maximum d'articles retenus par source (anti-monopole) :
+# évite qu'une grosse source (ex: Reuters) sature la liste avant
+# même que les sources spécialisées (Conoship, SMFL...) ne soient lues.
+MAX_ARTICLES_PER_SOURCE = 3
+
+# Nombre total d'articles envoyés à Groq, et quota minimum garanti
+# par secteur parmi ce total (cf. select_balanced_articles).
+TOTAL_ARTICLES_FOR_GROQ = 20
+SECTORS = ["Rail", "Aviation", "Shipping", "Engines"]
+MIN_PER_SECTOR = 3  # 4 secteurs × 3 = 12 places "garanties" min, le reste (8) est libre
+
+# Fenêtre temporelle : un article plus vieux que ça est ignoré, pour éviter
+# de reprendre des actus déjà couvertes dans une édition précédente.
+# 14 jours = un cycle de la newsletter bimensuelle.
+# Comportement permissif : si la date de publication est absente ou
+# illisible dans le flux, l'article est gardé quand même (mieux vaut
+# un article potentiellement vieux qu'une source entière perdue).
+MAX_ARTICLE_AGE_DAYS = 14
+
+
+# ============================================================
+# HELPER — VÉRIFICATION DE FRAÎCHEUR D'UN ARTICLE
+# ============================================================
+def is_recent_enough(entry):
+    """
+    Retourne True si l'article a été publié dans les MAX_ARTICLE_AGE_DAYS
+    derniers jours.
+
+    Comportement permissif : si le flux RSS ne fournit pas de date de
+    publication exploitable (champ absent ou illisible), on retourne
+    True par défaut — on préfère garder un article potentiellement
+    vieux plutôt que de perdre une source entière à cause d'un flux
+    mal formé.
+    """
+    published = entry.get("published_parsed") or entry.get("updated_parsed")
+
+    if not published:
+        return True  # date inconnue → on garde par défaut
+
+    try:
+        published_date = datetime.datetime(*published[:6])
+    except (TypeError, ValueError):
+        return True  # date illisible → on garde par défaut
+
+    age = datetime.datetime.now() - published_date
+    return age.days <= MAX_ARTICLE_AGE_DAYS
+
 
 # ============================================================
 # ÉTAPE 1A — COLLECTE RSS
@@ -84,16 +170,34 @@ def collect_articles():
 
     for source in SOURCES:
         print(f"  → Lecture de {source['name']}...")
+        source_count = 0  # nombre d'articles retenus pour cette source
         try:
             feed = feedparser.parse(source["url"])
 
             for entry in feed.entries:
+                # Anti-monopole : une source ne fournit pas plus de
+                # MAX_ARTICLES_PER_SOURCE articles, pour laisser de la
+                # place aux sources plus petites/spécialisées.
+                if source_count >= MAX_ARTICLES_PER_SOURCE:
+                    break
+
+                # Filtre de fraîcheur : ignore les articles trop anciens
+                # (probablement déjà couverts dans une édition précédente).
+                if not is_recent_enough(entry):
+                    continue
+
                 title = entry.get("title", "")
                 summary = entry.get("summary", "")
                 link = entry.get("link", "")
                 text = (title + " " + summary).lower()
 
                 is_relevant = any(kw.lower() in text for kw in KEYWORDS)
+
+                # Filtre additionnel pour Aerobuzz : exclut l'aviation
+                # de loisir / ULM / meetings aériens, hors périmètre PE.
+                if is_relevant and source["name"] == "Aerobuzz":
+                    if any(ex_kw.lower() in text for ex_kw in AEROBUZZ_EXCLUDE_KEYWORDS):
+                        is_relevant = False
 
                 if is_relevant:
                     articles.append({
@@ -103,6 +207,7 @@ def collect_articles():
                         "link": link,
                         "sectors": source["sectors"]
                     })
+                    source_count += 1
 
         except Exception as e:
             print(f"  ⚠ Erreur sur {source['name']} : {e}")
@@ -110,6 +215,52 @@ def collect_articles():
 
     print(f"\n  ✓ {len(articles)} articles collectés via RSS")
     return articles
+
+
+# ============================================================
+# ÉTAPE 1A-BIS — SÉLECTION ÉQUILIBRÉE PAR SECTEUR
+# ============================================================
+def select_balanced_articles(articles):
+    """
+    Réduit la liste d'articles collectés à TOTAL_ARTICLES_FOR_GROQ
+    en garantissant un minimum d'articles par secteur (MIN_PER_SECTOR),
+    avant de combler le reste avec les articles restants dans l'ordre
+    de collecte (donc en respectant approximativement l'ordre des flux).
+
+    Un article peut couvrir plusieurs secteurs (ex: Reuters Business),
+    il est alors éligible au quota de chacun de ces secteurs mais n'est
+    ajouté qu'une seule fois à la liste finale.
+    """
+    if len(articles) <= TOTAL_ARTICLES_FOR_GROQ:
+        return articles
+
+    selected = []
+    selected_ids = set()  # index dans `articles` déjà choisis
+
+    # ── Étape A : quota minimum garanti par secteur ──
+    for sector in SECTORS:
+        count_for_sector = 0
+        for i, article in enumerate(articles):
+            if count_for_sector >= MIN_PER_SECTOR:
+                break
+            if i in selected_ids:
+                continue
+            if sector in article["sectors"]:
+                selected.append(article)
+                selected_ids.add(i)
+                count_for_sector += 1
+
+    # ── Étape B : remplissage avec le reste, dans l'ordre de collecte ──
+    for i, article in enumerate(articles):
+        if len(selected) >= TOTAL_ARTICLES_FOR_GROQ:
+            break
+        if i not in selected_ids:
+            selected.append(article)
+            selected_ids.add(i)
+
+    print(f"  ✓ {len(selected)} articles sélectionnés pour Groq "
+          f"(sur {len(articles)} collectés, min {MIN_PER_SECTOR}/secteur)")
+    return selected[:TOTAL_ARTICLES_FOR_GROQ]
 
 
 # ============================================================
@@ -150,8 +301,9 @@ def generate_newsletter(articles, manual_content=""):
     pour générer la newsletter en JSON structuré avec liens sources.
     """
     # Résumé des articles RSS avec leurs liens
+    # (la liste `articles` est déjà bornée par select_balanced_articles)
     articles_text = ""
-    for i, a in enumerate(articles[:20]):
+    for i, a in enumerate(articles):
         articles_text += f"\n[{i+1}] {a['title']} ({a['source']})\n"
         articles_text += f"URL: {a['link']}\n"
         articles_text += f"{a['summary']}\n"
@@ -441,6 +593,7 @@ def main():
 
     print("\n[1/4] Collecte des actualités...")
     articles = collect_articles()
+    articles = select_balanced_articles(articles)
     manual_content = read_manual_input()
 
     if not articles and not manual_content:

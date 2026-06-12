@@ -21,7 +21,8 @@
     .page { display: none; padding: 28px 32px; max-width: 1100px; margin: 0 auto; }
     .page.active { display: block; }
     .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #9ca3af; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #e5e2db; }
-    .newsletter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .newsletter-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    @media (max-width: 1000px) { .newsletter-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 700px) { .newsletter-grid { grid-template-columns: 1fr; } }
     .deal-card { background: #fff; border: 0.5px solid #e5e2db; border-radius: 10px; padding: 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; transition: box-shadow 0.15s; }
     .deal-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
@@ -71,9 +72,9 @@
 </nav>
 
 <div class="hero" id="hero">
-  <div class="hero-edition">EDITION #01 — 12 JUNE 2026</div>
-  <div class="hero-title">European Transport Infrastructure Investments Gain Momentum</div>
-  <div class="hero-meta">3 deals tracked <span>·</span> 3 macro stories <span>·</span> 4 sectors covered</div>
+  <div class="hero-edition">EDITION #02 — 12 JUNE 2026</div>
+  <div class="hero-title">European Transport Infrastructure Sees Key Investments</div>
+  <div class="hero-meta">3 deals tracked <span>·</span> 2 macro stories <span>·</span> 4 sectors covered</div>
 </div>
 
 <div class="page active" id="page-newsletter">
@@ -93,7 +94,7 @@
         <span class="deal-sector-badge badge-Shipping">Shipping</span>
         <div class="deal-body">
           <div class="deal-title">Balaena Acquires APCL Group for $200m</div>
-          <div class="deal-meta">$200m · UK · M&A</div>
+          <div class="deal-meta">$200m · United Kingdom · M&A</div>
           <a href="https://www.seatrade-maritime.com/shipyards/balaena-acquiring-apcl-group-for-200m-boosting-repair-capacity" target="_blank" class="source-link">↗ Seatrade Maritime</a>
         </div>
       </div>
@@ -101,7 +102,7 @@
         <span class="deal-sector-badge badge-Aviation">Aviation</span>
         <div class="deal-body">
           <div class="deal-title">Boeing Signs Agreement with Uganda Airlines for 10 Aircraft</div>
-          <div class="deal-meta">$985m · Uganda · Infrastructure</div>
+          <div class="deal-meta">Approximately $985m · Uganda · Infrastructure</div>
           <a href="https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html" target="_blank" class="source-link">↗ Journal de l'Aviation</a>
         </div>
       </div><!-- DEALS_END --></div>
@@ -111,22 +112,32 @@
       <!-- MACRO_START -->
       <div class="news-card">
         <div class="news-tag">INFRASTRUCTURE</div>
-        <div class="news-title">European Ports Invest in Vehicle Handling Capacity</div>
-        <div class="news-body">The development of vehicle hubs at European ports, such as the Port of Amsterdam, is expected to increase the region's competitiveness and attract new investments. This trend highlights the growing importance of strategic infrastructure investments in the European shipping sector, with implications for investors seeking to capitalize on the region's growth.</div>
-        <a href="https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam" target="_blank" class="source-link">↗ Seatrade Maritime</a>
+        <div class="news-title">Saarbahn Begins Passenger Trials with Stadler Tram-Trains</div>
+        <div class="news-body">The introduction of new tram-trains in Saarbrücken's city centre marks a significant investment in Germany's rail infrastructure, potentially increasing passenger capacity and reducing travel times. This development may have implications for Rive's investments in the European rail sector, particularly in terms of urban mobility and sustainable transportation.</div>
+        <a href="https://www.railwaygazette.com/tram-train/2026/06/12/saarbahn-begins-passenger-trials-with-stadler-tram-trains/" target="_blank" class="source-link">↗ Railway Gazette</a>
       </div>
       <div class="news-card">
-        <div class="news-tag">GEOPOLITICS</div>
-        <div class="news-title">Global Trade Flows Reshaped by Critical Minerals Demand</div>
-        <div class="news-body">The growing demand for critical minerals is reshaping global trade flows, industrial policy, and supply chains, creating new opportunities and challenges for the shipping industry. European investors should be aware of these shifts and their potential implications for the region's transport infrastructure and trade relationships.</div>
+        <div class="news-tag">MARKET</div>
+        <div class="news-title">Critical Minerals Reshaping Global Trade</div>
+        <div class="news-body">The increasing demand for critical minerals is driving changes in global trade flows, industrial policy, and supply chains, potentially creating new opportunities and challenges for the shipping industry. As a key player in the European transport infrastructure sector, Rive may need to consider the implications of these shifts on its investments and portfolio companies.</div>
         <a href="https://splash247.com/critical-minerals-reshaping-global-trade-unctad/" target="_blank" class="source-link">↗ Splash247</a>
+      </div><!-- MACRO_END -->
+    </div>
+    <div>
+      <div class="section-label">COUNTERPARTIES WATCH</div>
+      <!-- COUNTERPARTIES_START -->
+      <div class="news-card">
+        <div class="news-tag">Lufthansa Technik</div>
+        <div class="news-title">Lufthansa Technik Eyes Larger Defense Activities</div>
+        <div class="news-body">Lufthansa Technik's expansion into defense activities may diversify its revenue streams and increase its competitiveness in the market, potentially impacting Rive's investments in the company or the broader aviation sector.</div>
+        <a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQOXo3c3JwUE96eTFMbk93RkhhM2o3bnVxczFHSThUSDY0cldXMDMzb2NMNVB4QjJkOVljd293MGlZMHdOWUFHTzBJTkQwU0s1aktLSWY3eFktRGV2Y2JNY084b3FlUlVNOFViUUlwLWtPSGEtV3VOS2s3NGdSMkxsZkxOeU5fN3cxVVRZMVNtRDJtTFZpdEFFR3N5STJPcHVnN1B3S2ZEOERnQQ?oc=5" target="_blank" class="source-link">↗ Aviation Week</a>
       </div>
       <div class="news-card">
-        <div class="news-tag">TECHNOLOGY</div>
-        <div class="news-title">Cybersecurity Becomes a Key Concern for Transport Infrastructure</div>
-        <div class="news-body">The awarding of cybersecurity contracts, such as DNV's contract for the Santiago de los Caballeros monorail project, highlights the growing importance of cybersecurity in the transport infrastructure sector. Investors should consider the potential risks and opportunities associated with cybersecurity investments in European transport infrastructure.</div>
-        <a href="https://www.railwaygazette.com/monorail/2026/06/11/dnv-awarded-santiago-de-los-caballeros-monorail-cybersecurity-contract/" target="_blank" class="source-link">↗ Railway Gazette</a>
-      </div><!-- MACRO_END -->
+        <div class="news-tag">SBB Cargo</div>
+        <div class="news-title">CZ LOKO Wins PKP Intercity Order and Targets SBB Cargo Tender</div>
+        <div class="news-body">CZ LOKO's recent order win and potential bid for the SBB Cargo tender may increase its market share and competitiveness in the European rail cargo market, potentially impacting Rive's investments in the sector or its partnerships with SBB Cargo.</div>
+        <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNWdFUTl3V1U1N0xRODFNaWo3U1cyYnNJZEdSS21MT1dyd1R6MWhadGJsRjRWSmhNTUlhNnBvTDduTWpLNlI5ODAtem5aYkZ0dUxqV1J4Q2ZmQ00zRjd1R3Ita0ZOU2tudTE2RzBIRzY2RnQwUHY3MWxoNjEyWmN4RXBXSkNtQk9DOXR5RVFndVR6Zk9IU0laTXl0RWdhbEt5SUdIZ0gxS2Z1dThkd1ItX21RY09sRURN?oc=5" target="_blank" class="source-link">↗ RAILMARKET.com</a>
+      </div><!-- COUNTERPARTIES_END -->
     </div>
   </div>
 </div>
@@ -160,11 +171,11 @@
 <div class="page" id="page-archive">
   <div class="section-label">ALL EDITIONS</div>
   <div id="archive-list">
-    <div class="archive-card" onclick="window.location='archives/edition-01.html'">
+    <div class="archive-card" onclick="window.location='archives/edition-02.html'">
       <div>
-        <div class="archive-edition">EDITION #01 — 12 JUNE 2026</div>
-        <div class="archive-title">European Transport Infrastructure Investments Gain Momentum</div>
-        <div class="archive-meta">3 deals · 3 macro stories</div>
+        <div class="archive-edition">EDITION #02 — 12 JUNE 2026</div>
+        <div class="archive-title">European Transport Infrastructure Sees Key Investments</div>
+        <div class="archive-meta">3 deals · 2 macro stories</div>
       </div>
       <span class="archive-arrow">→</span>
     </div>

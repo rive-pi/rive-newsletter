@@ -129,6 +129,70 @@ MIN_PER_SECTOR = 3  # 4 secteurs × 3 = 12 places "garanties" min, le reste (8) 
 # un article potentiellement vieux qu'une source entière perdue).
 MAX_ARTICLE_AGE_DAYS = 14
 
+# ── CONTREPARTIES RIVE À SURVEILLER ──
+# Noms nettoyés (sans formes juridiques GmbH/Ltd/SAS/AG/etc.) pour des
+# requêtes Google News plus pertinentes. Pour les noms très génériques
+# (Monti, VLO, PSL, HUBERT, Rail Unit...), un mot de contexte ("rail" /
+# "logistics") a été ajouté pour éviter le bruit.
+COUNTERPARTIES = [
+    "KombiRail Europe",
+    "LEG Leipziger Eisenbahnverkehrsgesellschaft",
+    "LOCON Logistik Consulting",
+    "Logix Aero",
+    "Lufthansa Technik",
+    "Mindener Kreisbahnen",
+    "Monacair",
+    "MTU Maintenance Lease Services",
+    "Niederrheinische Verkehrsbetriebe NIAG",
+    "OHI Finance",
+    "Omni Taxi Aereo",
+    "Pegasus Aviacion",
+    "ProTrain Resurs",
+    "RBP Rheinische Bahnpersonal",
+    "RheinCargo",
+    "Rhenus Rail St. Ingbert",
+    "RTB Cargo Netherlands",
+    "SAF Helicopteres",
+    "SGL Schienen Güter Logistik",
+    "SKL Schienen Komplex Logistik Magdeburg",
+    "SLG Spitzke Logistik",
+    "SPL Eisenbahnverkehr",
+    "Titan Helicopters",
+    "TRIANGULA Logistik",
+    "Ultimate Heli",
+    "WFL Wedler Franz Logistik",
+    "Wiking Helikopter Service",
+    "zl-traktion",
+    "Monti rail",
+    "Heli Service International",
+    "Uni-Fly Heliworx",
+    "Brilog Leasing",
+    "North Star Shipping Aberdeen",
+    "SBB Cargo",
+    "RFO Rail Force One",
+    "Hubert rail logistics",
+    "Schweerbau",
+    "VLO rail",
+    "Rail Unit logistics",
+    "Hering HBD",
+    "PSL rail logistics",
+    "SWEG Südwestdeutsche Landesverkehrs",
+    "Siemens Mobility",
+    "Willke Logistics",
+    "Cargo Logistik Rail Service",
+    "Diepholzer Kreisbahn ErailS",
+    "CFL cargo Deutschland",
+    "Train4Train",
+    "smart rail",
+]
+
+# Nombre maximum d'articles "Counterparties Watch" retenus au total
+# avant envoi à Groq (évite de surcharger le prompt).
+MAX_COUNTERPARTY_ARTICLES = 4
+
+# Modèle d'URL Google News RSS — recherche en anglais par défaut.
+GOOGLE_NEWS_RSS_TEMPLATE = "https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
+
 
 # ============================================================
 # HELPER — VÉRIFICATION DE FRAÎCHEUR D'UN ARTICLE
@@ -214,6 +278,17 @@ def collect_articles():
             continue
 
     print(f"\n  ✓ {len(articles)} articles collectés via RSS")
+
+    # Répartition par secteur (un article peut compter dans plusieurs
+    # secteurs s'il est issu d'une source multi-secteurs comme Reuters)
+    sector_counts = {sector: 0 for sector in SECTORS}
+    for article in articles:
+        for sector in article["sectors"]:
+            if sector in sector_counts:
+                sector_counts[sector] += 1
+    repartition = " · ".join(f"{s}: {c}" for s, c in sector_counts.items())
+    print(f"  Répartition : {repartition}")
+
     return articles
 
 
@@ -264,6 +339,64 @@ def select_balanced_articles(articles):
 
 
 # ============================================================
+# ÉTAPE 1C — NEWS DES CONTREPARTIES (Google News RSS)
+# ============================================================
+def collect_counterparty_news():
+    """
+    Pour chaque contrepartie de COUNTERPARTIES, interroge le flux
+    Google News RSS correspondant et garde le 1er article pertinent
+    (le plus récent, filtré par fraîcheur MAX_ARTICLE_AGE_DAYS).
+
+    Retourne au maximum MAX_COUNTERPARTY_ARTICLES articles au total,
+    et affiche une répartition par contrepartie (combien d'articles
+    trouvés pour chacune, avant troncature finale).
+    """
+    import urllib.parse
+
+    found_articles = []
+    counts_per_counterparty = {}
+
+    for name in COUNTERPARTIES:
+        counts_per_counterparty[name] = 0
+        query = urllib.parse.quote(f'"{name}"')
+        url = GOOGLE_NEWS_RSS_TEMPLATE.format(query=query)
+
+        try:
+            feed = feedparser.parse(url)
+
+            for entry in feed.entries:
+                if not is_recent_enough(entry):
+                    continue
+
+                title = entry.get("title", "")
+                summary = entry.get("summary", "")
+                link = entry.get("link", "")
+
+                found_articles.append({
+                    "counterparty": name,
+                    "title": title,
+                    "summary": summary,
+                    "link": link,
+                })
+                counts_per_counterparty[name] += 1
+                break  # un seul article par contrepartie
+
+        except Exception as e:
+            print(f"  ⚠ Erreur sur {name} : {e}")
+            continue
+
+    total_found = sum(counts_per_counterparty.values())
+    print(f"\n  ✓ {total_found} articles trouvés sur {len(COUNTERPARTIES)} contreparties")
+    repartition = " · ".join(f"{name}: {c}" for name, c in counts_per_counterparty.items())
+    print(f"  Répartition : {repartition}")
+
+    # Limite finale avant envoi à Groq
+    selected = found_articles[:MAX_COUNTERPARTY_ARTICLES]
+    print(f"  ✓ {len(selected)} articles retenus pour la section Counterparties Watch")
+    return selected
+
+
+# ============================================================
 # ÉTAPE 1B — LECTURE DU FICHIER MANUEL
 # ============================================================
 def read_manual_input():
@@ -295,11 +428,14 @@ def read_manual_input():
 # ============================================================
 # ÉTAPE 2 — GÉNÉRATION PAR GROQ
 # ============================================================
-def generate_newsletter(articles, manual_content=""):
+def generate_newsletter(articles, manual_content="", counterparty_articles=None):
     """
     Envoie les articles et le contenu manuel à Groq
     pour générer la newsletter en JSON structuré avec liens sources.
     """
+    if counterparty_articles is None:
+        counterparty_articles = []
+
     # Résumé des articles RSS avec leurs liens
     # (la liste `articles` est déjà bornée par select_balanced_articles)
     articles_text = ""
@@ -316,6 +452,15 @@ ADDITIONAL INFORMATION (added manually by the editor — treat as high priority)
 {manual_content}
 """
 
+    # Articles concernant les contreparties de Rive (Google News RSS)
+    counterparty_text = ""
+    if counterparty_articles:
+        counterparty_text = "\nNEWS ABOUT RIVE'S COUNTERPARTIES (operators, lessees, partners):\n"
+        for i, a in enumerate(counterparty_articles):
+            counterparty_text += f"\n[{i+1}] {a['title']} (about: {a['counterparty']})\n"
+            counterparty_text += f"URL: {a['link']}\n"
+            counterparty_text += f"{a['summary']}\n"
+
     prompt = f"""
 You are the editor of "Rive Private Investment Market Intelligence",
 a professional biweekly newsletter for a private investment firm
@@ -328,6 +473,7 @@ Audience: senior investment professionals, very busy, need concise sharp insight
 Based on these recent news articles (each with its URL):
 {articles_text}
 {manual_section}
+{counterparty_text}
 
 Generate a newsletter in this EXACT JSON format (pure JSON only, no markdown, no backticks):
 {{
@@ -352,12 +498,24 @@ Generate a newsletter in this EXACT JSON format (pure JSON only, no markdown, no
       "source": "Publication name",
       "source_url": "exact URL of the source article, or empty string if unknown"
     }}
+  ],
+  "counterparty_news": [
+    {{
+      "counterparty": "Name of the counterparty company this news is about",
+      "title": "Story headline — sharp and specific",
+      "body": "1-2 sentences summarizing the news and its relevance to Rive as an investor/lender to this counterparty",
+      "source": "Publication name",
+      "source_url": "exact URL of the source article, or empty string if unknown"
+    }}
   ]
 }}
 
 Rules:
 - 3 to 6 deals maximum, only genuine transactions (M&A, fundraising, infrastructure investment)
 - 2 to 4 macro stories maximum
+- 0 to 4 counterparty_news items — only include genuinely newsworthy items (operational changes,
+  financial events, leadership changes, contracts, incidents); omit if the article is trivial
+  (e.g. routine job postings) rather than inventing relevance
 - Every sentence must add value — no filler, no generic statements
 - Always include the investment angle or implication
 - Sharp professional English, active voice
@@ -433,7 +591,8 @@ def save_archive(content, edition_number):
         "edition_label": f"EDITION #{edition_number:02d} — {today_display}",
         "edition_title": content["edition_title"],
         "deals": content["deals"],
-        "macro_stories": content["macro_stories"]
+        "macro_stories": content["macro_stories"],
+        "counterparty_news": content.get("counterparty_news", [])
     }
 
     # Sauvegarde le JSON
@@ -500,6 +659,23 @@ def update_index_html(content, edition_number, total_deals):
         {source_html}
       </div>"""
 
+    # ── HTML des counterparty news avec liens sources ──
+    counterparty_html = ""
+    for c in content.get("counterparty_news", []):
+        source_html = ""
+        if c.get("source_url"):
+            source_html = f'<a href="{c["source_url"]}" target="_blank" class="source-link">↗ {c.get("source", "Source")}</a>'
+        elif c.get("source"):
+            source_html = f'<span class="source-label">{c["source"]}</span>'
+
+        counterparty_html += f"""
+      <div class="news-card">
+        <div class="news-tag">{c['counterparty']}</div>
+        <div class="news-title">{c['title']}</div>
+        <div class="news-body">{c['body']}</div>
+        {source_html}
+      </div>"""
+
     # ── Lecture du HTML ──
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
@@ -533,6 +709,14 @@ def update_index_html(content, edition_number, total_deals):
     html = re.sub(
         r'<!-- MACRO_START -->.*?<!-- MACRO_END -->',
         f'<!-- MACRO_START -->{macro_html}<!-- MACRO_END -->',
+        html,
+        flags=re.DOTALL
+    )
+
+    # ── Mise à jour des counterparty news ──
+    html = re.sub(
+        r'<!-- COUNTERPARTIES_START -->.*?<!-- COUNTERPARTIES_END -->',
+        f'<!-- COUNTERPARTIES_START -->{counterparty_html}<!-- COUNTERPARTIES_END -->',
         html,
         flags=re.DOTALL
     )
@@ -596,12 +780,15 @@ def main():
     articles = select_balanced_articles(articles)
     manual_content = read_manual_input()
 
+    print("\n  → Collecte des news sur les contreparties...")
+    counterparty_articles = collect_counterparty_news()
+
     if not articles and not manual_content:
         print("  ⚠ Aucun contenu collecté. Vérifie ta connexion.")
         return
 
     print("\n[2/4] Génération par Groq...")
-    content = generate_newsletter(articles, manual_content)
+    content = generate_newsletter(articles, manual_content, counterparty_articles)
 
     print("\n[3/4] Mise à jour des fichiers...")
     total_deals = update_deals_json(content["deals"])

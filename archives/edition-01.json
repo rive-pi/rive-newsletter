@@ -1,65 +1,95 @@
 {
   "edition_label": "EDITION #01 — 12 JUNE 2026",
-  "edition_title": "European Transport Infrastructure Investments Gain Momentum",
+  "edition_title": "European Transport Infrastructure Sees Key Investments",
   "deals": [
     {
-      "title": "Hyundai Glovis to Develop Vehicle Hub at Port of Amsterdam",
-      "sector": "Shipping",
-      "type": "Infrastructure",
-      "value": "Unknown",
-      "geography": "Netherlands",
-      "summary": "Hyundai Glovis will operate a 47-hectare land plot within the Port of Amsterdam, enhancing the port's vehicle handling capacity and attracting new investments. This development is expected to increase the port's competitiveness and provide new opportunities for investors. The project underscores the growing importance of strategic infrastructure investments in the European shipping sector.",
-      "source": "Seatrade Maritime",
-      "source_url": "https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam",
+      "title": "Boeing signs agreement with Uganda Airlines for 10 aircraft",
+      "sector": "Aviation",
+      "type": "M&A",
+      "value": "approximately $985 million",
+      "geography": "Uganda",
+      "summary": "Boeing has secured a major deal with Uganda Airlines, marking a significant investment in the African aviation sector. This agreement underscores the growing demand for air travel in the region and presents opportunities for investors in the aviation industry. The deal is expected to boost Uganda's economic growth and increase connectivity across the continent.",
+      "source": "Journal de l'Aviation",
+      "source_url": "https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html",
       "id": 1,
       "date": "2026-06-12"
     },
     {
-      "title": "Balaena Acquires APCL Group for $200m",
+      "title": "Hyundai Glovis to develop vehicle hub at Port of Amsterdam",
       "sector": "Shipping",
-      "type": "M&A",
-      "value": "$200m",
-      "geography": "UK",
-      "summary": "Balaena's acquisition of APCL Group expands its repair capacity and targets new markets, highlighting the growing demand for ship repair and maintenance services in Europe. This deal demonstrates the ongoing consolidation in the shipping industry and the importance of strategic acquisitions for investors.",
+      "type": "Infrastructure",
+      "value": "Unknown",
+      "geography": "Netherlands",
+      "summary": "Hyundai Glovis has announced plans to develop a vehicle hub at the Port of Amsterdam, marking a significant investment in the European shipping sector. This project is expected to increase the port's capacity and efficiency, making it an attractive location for automotive manufacturers and logistics companies. The development will also create new opportunities for investors in the shipping and logistics industry.",
       "source": "Seatrade Maritime",
-      "source_url": "https://www.seatrade-maritime.com/shipyards/balaena-acquiring-apcl-group-for-200m-boosting-repair-capacity",
+      "source_url": "https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam",
       "id": 2,
       "date": "2026-06-12"
     },
     {
-      "title": "Boeing Signs Agreement with Uganda Airlines for 10 Aircraft",
-      "sector": "Aviation",
-      "type": "Infrastructure",
-      "value": "$985m",
-      "geography": "Uganda",
-      "summary": "Boeing's agreement with Uganda Airlines marks a significant investment in the African aviation sector, with potential implications for European investors. The deal highlights the growing demand for air travel in emerging markets and the importance of strategic partnerships for airlines and manufacturers.",
-      "source": "Journal de l'Aviation",
-      "source_url": "https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html",
+      "title": "Balaena acquires APCL Group for $200m",
+      "sector": "Shipping",
+      "type": "M&A",
+      "value": "$200m",
+      "geography": "UK",
+      "summary": "Balaena has acquired APCL Group, a UK-based repair yard operator, in a deal worth $200m. This acquisition is expected to increase Balaena's repair capacity and expand its presence in the European shipping sector. The deal highlights the growing demand for ship repair and maintenance services, presenting opportunities for investors in the shipping industry.",
+      "source": "Seatrade Maritime",
+      "source_url": "https://www.seatrade-maritime.com/shipyards/balaena-acquiring-apcl-group-for-200m-boosting-repair-capacity",
       "id": 3,
       "date": "2026-06-12"
     }
   ],
   "macro_stories": [
     {
-      "tag": "INFRASTRUCTURE",
-      "title": "European Ports Invest in Vehicle Handling Capacity",
-      "body": "The development of vehicle hubs at European ports, such as the Port of Amsterdam, is expected to increase the region's competitiveness and attract new investments. This trend highlights the growing importance of strategic infrastructure investments in the European shipping sector, with implications for investors seeking to capitalize on the region's growth.",
+      "tag": "MARKET",
+      "title": "Container freight rates continue to rise",
+      "body": "Container freight rates have continued to rise, driven by an early peak season. This trend is expected to impact the shipping industry, with higher rates potentially affecting profitability for some operators. Investors should monitor the situation closely, as changes in freight rates can have significant implications for the sector.",
       "source": "Seatrade Maritime",
-      "source_url": "https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam"
+      "source_url": "https://www.seatrade-maritime.com/containers/container-freight-rates-continue-march-northwards"
     },
     {
       "tag": "GEOPOLITICS",
-      "title": "Global Trade Flows Reshaped by Critical Minerals Demand",
-      "body": "The growing demand for critical minerals is reshaping global trade flows, industrial policy, and supply chains, creating new opportunities and challenges for the shipping industry. European investors should be aware of these shifts and their potential implications for the region's transport infrastructure and trade relationships.",
+      "title": "Hormuz shipping crisis escalates",
+      "body": "The Hormuz shipping crisis has escalated, with fresh attacks between the US and Iran. This situation poses significant risks to the shipping industry, including increased insurance costs and potential disruptions to trade. Investors should be aware of the potential implications for the sector and monitor the situation closely.",
+      "source": "Splash247",
+      "source_url": "https://splash247.com/splash-wrap-trading-missiles/"
+    },
+    {
+      "tag": "TECHNOLOGY",
+      "title": "Critical minerals reshape global trade",
+      "body": "The global race to secure critical minerals is reshaping trade flows, industrial policy, and supply chains. This trend is expected to create new opportunities and challenges for the shipping industry, with investors needing to adapt to the changing landscape. The demand for critical minerals is driven by the energy transition and advanced technologies, making it an important area to watch for investors.",
       "source": "Splash247",
       "source_url": "https://splash247.com/critical-minerals-reshaping-global-trade-unctad/"
     },
     {
-      "tag": "TECHNOLOGY",
-      "title": "Cybersecurity Becomes a Key Concern for Transport Infrastructure",
-      "body": "The awarding of cybersecurity contracts, such as DNV's contract for the Santiago de los Caballeros monorail project, highlights the growing importance of cybersecurity in the transport infrastructure sector. Investors should consider the potential risks and opportunities associated with cybersecurity investments in European transport infrastructure.",
+      "tag": "INFRASTRUCTURE",
+      "title": "Saarbahn begins passenger trials with Stadler tram-trains",
+      "body": "Saarbahn has started limited passenger operation of its second-generation Stadler Citylink tram-trains in Saarbrücken's city centre. This development marks a significant investment in the European rail sector, with the new tram-trains expected to improve efficiency and reduce emissions. Investors should monitor the progress of similar projects, as they can have a positive impact on the environment and the economy.",
       "source": "Railway Gazette",
-      "source_url": "https://www.railwaygazette.com/monorail/2026/06/11/dnv-awarded-santiago-de-los-caballeros-monorail-cybersecurity-contract/"
+      "source_url": "https://www.railwaygazette.com/tram-train/2026/06/12/saarbahn-begins-passenger-trials-with-stadler-tram-trains/"
+    }
+  ],
+  "counterparty_news": [
+    {
+      "counterparty": "Logix Aero",
+      "title": "Unauthorised email sent to customer",
+      "body": "Logix Aero has experienced an issue with an unauthorised email being sent to one of its customers. The company should take steps to prevent such incidents in the future, as they can damage customer trust and reputation. Investors should monitor the situation to ensure that Logix Aero is taking adequate measures to protect its customers' data.",
+      "source": "TechCentral.ie",
+      "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPR3JxdnFlNkVPRVFpRTJHcnAxdDFpTjVpR2JvRkM4X3FmRWZTdWJ2MlNHM1pCSGZTNVMyVWdBdm5zYXV1dV91VWcxdGgtZk5LcjJPSE8zR3UxamZXS2hyZ2RMREs0bFl5OVMyR2U1NjZxSU5JYmpTSTlzeXJKN0NoV0dHUlRhMFBpejB4MW5OdktobHVPMXNMZ0FB?oc=5"
+    },
+    {
+      "counterparty": "Lufthansa Technik",
+      "title": "Lufthansa Technik eyes larger defense activities",
+      "body": "Lufthansa Technik is exploring opportunities to expand its defense activities. This move could potentially create new revenue streams for the company and increase its competitiveness in the market. Investors should monitor Lufthansa Technik's progress in the defense sector, as it may have a positive impact on the company's financial performance.",
+      "source": "Aviation Week",
+      "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQOXo3c3JwUE96eTFMbk93RkhhM2o3bnVxczFHSThUSDY0cldXMDMzb2NMNVB4QjJkOVljd293MGlZMHdOWUFHTzBJTkQwU0s1aktLSWY3eFktRGV2Y2JNY084b3FlUlVNOFViUUlwLWtPSGEtV3VOS2s3NGdSMkxsZkxOeU5fN3cxVVRZMVNtRDJtTFZpdEFFR3N5STJPcHVnN1B3S2ZEOERnQQ?oc=5"
+    },
+    {
+      "counterparty": "SBB Cargo",
+      "title": "CZ LOKO targets SBB Cargo tender",
+      "body": "CZ LOKO is targeting a tender for SBB Cargo, which could potentially lead to a significant contract for the company. Investors should monitor the outcome of the tender, as it may have a positive impact on CZ LOKO's financial performance and increase its presence in the European rail market.",
+      "source": "RAILMARKET.com",
+      "source_url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNWdFUTl3V1U1N0xRODFNaWo3U1cyYnNJZEdSS21MT1dyd1R6MWhadGJsRjRWSmhNTUlhNnBvTDduTWpLNlI5ODAtem5aYkZ0dUxqV1J4Q2ZmQ00zRjd1R3Ita0ZOU2tudTE2RzBIRzY2RnQwUHY3MWxoNjEyWmN4RXBXSkNtQk9DOXR5RVFndVR6Zk9IU0laTXl0RWdhbEt5SUdIZ0gxS2Z1dThkd1ItX21RY09sRURN?oc=5"
     }
   ]
 }

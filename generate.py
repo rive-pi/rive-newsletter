@@ -188,7 +188,7 @@ COUNTERPARTIES = [
 
 # Nombre maximum d'articles "Counterparties Watch" retenus au total
 # avant envoi à Groq (évite de surcharger le prompt).
-MAX_COUNTERPARTY_ARTICLES = 4
+MAX_COUNTERPARTY_ARTICLES = 5
 
 # Modèle d'URL Google News RSS — recherche en anglais par défaut.
 GOOGLE_NEWS_RSS_TEMPLATE = "https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
@@ -512,10 +512,12 @@ Generate a newsletter in this EXACT JSON format (pure JSON only, no markdown, no
 
 Rules:
 - 3 to 6 deals maximum, only genuine transactions (M&A, fundraising, infrastructure investment)
-- 2 to 4 macro stories maximum
-- 0 to 4 counterparty_news items — only include genuinely newsworthy items (operational changes,
-  financial events, leadership changes, contracts, incidents); omit if the article is trivial
-  (e.g. routine job postings) rather than inventing relevance
+- 3 to 4 macro stories
+- 3 to 4 counterparty_news items if at least 3 counterparty articles were provided above;
+  otherwise include ALL counterparty articles provided (do not invent items to reach 3).
+  Only include genuinely newsworthy items (operational changes, financial events, leadership
+  changes, contracts, incidents); omit trivial ones (e.g. routine job postings) rather than
+  inventing relevance
 - Every sentence must add value — no filler, no generic statements
 - Always include the investment angle or implication
 - Sharp professional English, active voice

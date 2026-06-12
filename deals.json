@@ -1,74 +1,38 @@
 {
   "deals": [
     {
-      "title": "Boeing Signs Agreement with Uganda Airlines for 10 Aircraft",
-      "sector": "Aviation",
-      "type": "Infrastructure",
-      "value": "Approximately $985m",
-      "geography": "Uganda",
-      "summary": "The agreement between Boeing and Uganda Airlines marks a significant investment in the African aviation market, potentially increasing air travel demand and economic growth in the region. As a major player in the global aviation industry, this deal may impact Rive's investments in the sector, particularly in terms of emerging market opportunities.",
-      "source": "Journal de l'Aviation",
-      "source_url": "https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html",
-      "id": 6,
-      "date": "2026-06-12"
-    },
-    {
-      "title": "Balaena Acquires APCL Group for $200m",
-      "sector": "Shipping",
-      "type": "M&A",
-      "value": "$200m",
-      "geography": "United Kingdom",
-      "summary": "Balaena's acquisition of APCL Group expands its repair capacity and targets new markets, potentially increasing its competitiveness in the ship repair industry. This deal may have implications for Rive's investments in the shipping sector, particularly in terms of market consolidation and growth opportunities.",
-      "source": "Seatrade Maritime",
-      "source_url": "https://www.seatrade-maritime.com/shipyards/balaena-acquiring-apcl-group-for-200m-boosting-repair-capacity",
-      "id": 5,
-      "date": "2026-06-12"
-    },
-    {
-      "title": "Hyundai Glovis to Develop Vehicle Hub at Port of Amsterdam",
-      "sector": "Shipping",
-      "type": "Infrastructure",
-      "value": "Unknown",
-      "geography": "Netherlands",
-      "summary": "Hyundai Glovis will operate from a 47-hectare land plot within the port, enhancing the port's vehicle handling capacity and potentially increasing trade volumes. This investment is expected to boost the regional economy and create new job opportunities. As a key player in the European shipping industry, this development may impact Rive's investments in the sector.",
-      "source": "Seatrade Maritime",
-      "source_url": "https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam",
-      "id": 4,
-      "date": "2026-06-12"
-    },
-    {
-      "title": "Boeing Signs Agreement with Uganda Airlines for 10 Aircraft",
-      "sector": "Aviation",
-      "type": "Infrastructure",
-      "value": "$985m",
-      "geography": "Uganda",
-      "summary": "Boeing's agreement with Uganda Airlines marks a significant investment in the African aviation sector, with potential implications for European investors. The deal highlights the growing demand for air travel in emerging markets and the importance of strategic partnerships for airlines and manufacturers.",
-      "source": "Journal de l'Aviation",
-      "source_url": "https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html",
-      "id": 3,
-      "date": "2026-06-12"
-    },
-    {
-      "title": "Balaena Acquires APCL Group for $200m",
+      "title": "Balaena acquires APCL Group for $200m",
       "sector": "Shipping",
       "type": "M&A",
       "value": "$200m",
       "geography": "UK",
-      "summary": "Balaena's acquisition of APCL Group expands its repair capacity and targets new markets, highlighting the growing demand for ship repair and maintenance services in Europe. This deal demonstrates the ongoing consolidation in the shipping industry and the importance of strategic acquisitions for investors.",
+      "summary": "Balaena has acquired APCL Group, a UK-based repair yard operator, in a deal worth $200m. This acquisition is expected to increase Balaena's repair capacity and expand its presence in the European shipping sector. The deal highlights the growing demand for ship repair and maintenance services, presenting opportunities for investors in the shipping industry.",
       "source": "Seatrade Maritime",
       "source_url": "https://www.seatrade-maritime.com/shipyards/balaena-acquiring-apcl-group-for-200m-boosting-repair-capacity",
-      "id": 2,
+      "id": 3,
       "date": "2026-06-12"
     },
     {
-      "title": "Hyundai Glovis to Develop Vehicle Hub at Port of Amsterdam",
+      "title": "Hyundai Glovis to develop vehicle hub at Port of Amsterdam",
       "sector": "Shipping",
       "type": "Infrastructure",
       "value": "Unknown",
       "geography": "Netherlands",
-      "summary": "Hyundai Glovis will operate a 47-hectare land plot within the Port of Amsterdam, enhancing the port's vehicle handling capacity and attracting new investments. This development is expected to increase the port's competitiveness and provide new opportunities for investors. The project underscores the growing importance of strategic infrastructure investments in the European shipping sector.",
+      "summary": "Hyundai Glovis has announced plans to develop a vehicle hub at the Port of Amsterdam, marking a significant investment in the European shipping sector. This project is expected to increase the port's capacity and efficiency, making it an attractive location for automotive manufacturers and logistics companies. The development will also create new opportunities for investors in the shipping and logistics industry.",
       "source": "Seatrade Maritime",
       "source_url": "https://www.seatrade-maritime.com/ports-logistics/hyundai-glovis-to-develop-vehicle-hub-at-port-of-amsterdam",
+      "id": 2,
+      "date": "2026-06-12"
+    },
+    {
+      "title": "Boeing signs agreement with Uganda Airlines for 10 aircraft",
+      "sector": "Aviation",
+      "type": "M&A",
+      "value": "approximately $985 million",
+      "geography": "Uganda",
+      "summary": "Boeing has secured a major deal with Uganda Airlines, marking a significant investment in the African aviation sector. This agreement underscores the growing demand for air travel in the region and presents opportunities for investors in the aviation industry. The deal is expected to boost Uganda's economic growth and increase connectivity across the continent.",
+      "source": "Journal de l'Aviation",
+      "source_url": "https://www.journal-aviation.com/actualites-industrie-aeronautique/avions-commerciaux/boeing-signe-un-accord-avec-uganda-airlines-pour-10-appareils-20260611.html",
       "id": 1,
       "date": "2026-06-12"
     }
